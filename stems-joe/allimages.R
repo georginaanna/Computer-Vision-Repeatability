@@ -15,15 +15,17 @@
 
 
 ## 00 Setup ####
-setwd(r'(D:\Dropbox\WORK\__Harper Adams stuff\MANUSCRIPTS\George Wager-repeatability\data-stems-joe)')
+setwd(r'(D:\Dropbox\git\data-stems-joe\stems-joe)')
 
 bb <- read.csv('allimages-bb/train.csv')
 
 ## 01 Output data for Yolov5 ####
 
 ### Point 1 Found bb replication in raw data ####
-pics <- list.files('allimages-pics/')
+pics <- list.files('images/')
 which(bb$image_id == pics[1]) # compare bb 1:5 and 307:311...
+
+# BEWARE the bbs are input twice!
 bb[which(bb$image_id == pics[1]),] # alrighty then
 
 which(bb$image_id == pics[163])
@@ -60,11 +62,15 @@ pics2 <- gsub(pattern = '.png',
 
 for(i in 1:163){
   temp <- which(bb$image_id == pics[i])
-  write.table(x = bb_yolo[temp,], sep = ',',
-            file = paste('allimages-bb-yolo/',pics2[i], '.csv', sep = ''),
+  write.table(x = bb_yolo[temp,], sep = ' ',
+            file = paste('labels/',pics2[i], '.txt', sep = ''),
             row.names = F, col.names = F)
 }
 
-
-
+# for(i in 1:163){
+#   temp <- which(bb$image_id == pics[i])
+#   write.table(x = bb_yolo[temp,], sep = ',',
+#               file = paste('allimages-bb-yolo/',pics2[i], '.csv', sep = ''),
+#               row.names = F, col.names = F)
+# }
 
