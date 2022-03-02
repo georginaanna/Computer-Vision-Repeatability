@@ -3,18 +3,18 @@ datrecall <- data.frame(
   g1 = gold1[,'metrics.recall'],
   g2 = gold2[,'metrics.recall'],
   g3 = gold3[,'metrics.recall'],
-  ch1 = comphi1[,'metrics.recall'],
-  ch2 = comphi2[,'metrics.recall'],
-  ch3 = comphi3[,'metrics.recall'],
-  cl1 = complo1[,'metrics.recall'],
-  cl2 = complo2[,'metrics.recall'],
-  cl3 = complo3[,'metrics.recall'],
-  lh1 = livehi1[,'metrics.recall'],
-  lh2 = livehi2[,'metrics.recall'],
-  lh3 = livehi3[,'metrics.recall'],
-  ll1 = livelo1[,'metrics.recall'],
-  ll2 = livelo2[,'metrics.recall'],
-  ll3 = livelo3[,'metrics.recall']
+  ch1 = compworst1[,'metrics.recall'],
+  ch2 = compworst2[,'metrics.recall'],
+  ch3 = compworst3[,'metrics.recall'],
+  cl1 = compbest1[,'metrics.recall'],
+  cl2 = compbest2[,'metrics.recall'],
+  cl3 = compbest3[,'metrics.recall'],
+  lh1 = liveworst1[,'metrics.recall'],
+  lh2 = liveworst2[,'metrics.recall'],
+  lh3 = liveworst3[,'metrics.recall'],
+  ll1 = livebest1[,'metrics.recall'],
+  ll2 = livebest2[,'metrics.recall'],
+  ll3 = livebest3[,'metrics.recall']
 )
 
 
@@ -40,7 +40,7 @@ mtext(side = 2, line = 2.5, cex = plotcex,
       text = 'Recall')
 
 for(i in 1:ncol(datrecall)){
-  points(x = epochs, y = datrecall[,i], pch = 15, cex = .8, 
+  points(x = epochs, y = datrecall[,i], pch = 16, cex = .8, 
          col = adjustcolor(colslong[i], alpha.f = .5))
   lines(lowess(x = epochs, y = datrecall[,i], f=.66), 
         col = colslong[i], lty = 3, lwd = 2)
@@ -54,10 +54,11 @@ for(i in 1:5){
 }
 
 legend(x = 'topleft', bty = 'n',
-       legend = c('Baseline', 'Comp-high', 'Comp-low', 
-                  'Live-high', 'Live-low'),
+       legend = c('Baseline', 'Comp-worst', 'Comp-best', 
+                  'Live-worst', 'Live-best'),
        lty = 1,
        col = cols,
+       pch = 16,
        cex = plotcex)
 
 dev.off()

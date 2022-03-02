@@ -4,18 +4,18 @@ dattrainloss <- data.frame(
   g1 = gold1[,'train.box_loss'] + gold1[,'train.obj_loss'],
   g2 = gold2[,'train.box_loss'] + gold1[,'train.obj_loss'],
   g3 = gold3[,'train.box_loss'] + gold1[,'train.obj_loss'],
-  ch1 = comphi1[,'train.box_loss'] + gold1[,'train.obj_loss'],
-  ch2 = comphi2[,'train.box_loss'] + gold1[,'train.obj_loss'],
-  ch3 = comphi3[,'train.box_loss'] + gold1[,'train.obj_loss'],
-  cl1 = complo1[,'train.box_loss'] + gold1[,'train.obj_loss'],
-  cl2 = complo2[,'train.box_loss'] + gold1[,'train.obj_loss'],
-  cl3 = complo3[,'train.box_loss'] + gold1[,'train.obj_loss'],
-  lh1 = livehi1[,'train.box_loss'] + gold1[,'train.obj_loss'],
-  lh2 = livehi2[,'train.box_loss'] + gold1[,'train.obj_loss'],
-  lh3 = livehi3[,'train.box_loss'] + gold1[,'train.obj_loss'],
-  ll1 = livelo1[,'train.box_loss'] + gold1[,'train.obj_loss'],
-  ll2 = livelo2[,'train.box_loss'] + gold1[,'train.obj_loss'],
-  ll3 = livelo3[,'train.box_loss'] + gold1[,'train.obj_loss']
+  ch1 = compworst1[,'train.box_loss'] + gold1[,'train.obj_loss'],
+  ch2 = compworst2[,'train.box_loss'] + gold1[,'train.obj_loss'],
+  ch3 = compworst3[,'train.box_loss'] + gold1[,'train.obj_loss'],
+  cl1 = compbest1[,'train.box_loss'] + gold1[,'train.obj_loss'],
+  cl2 = compbest2[,'train.box_loss'] + gold1[,'train.obj_loss'],
+  cl3 = compbest3[,'train.box_loss'] + gold1[,'train.obj_loss'],
+  lh1 = liveworst1[,'train.box_loss'] + gold1[,'train.obj_loss'],
+  lh2 = liveworst2[,'train.box_loss'] + gold1[,'train.obj_loss'],
+  lh3 = liveworst3[,'train.box_loss'] + gold1[,'train.obj_loss'],
+  ll1 = livebest1[,'train.box_loss'] + gold1[,'train.obj_loss'],
+  ll2 = livebest2[,'train.box_loss'] + gold1[,'train.obj_loss'],
+  ll3 = livebest3[,'train.box_loss'] + gold1[,'train.obj_loss']
 )
 
 
@@ -41,7 +41,7 @@ mtext(side = 2, line = 2.5, cex = plotcex,
       text = 'Training loss')
 
 for(i in 1:ncol(dattrainloss)){
-  points(x = epochs, y = dattrainloss[,i], pch = 15, cex = .8, 
+  points(x = epochs, y = dattrainloss[,i], pch = 16, cex = .8, 
          col = adjustcolor(colslong[i], alpha.f = .5))
   lines(lowess(x = epochs, y = dattrainloss[,i], f=.66), 
         col = colslong[i], lty = 3, lwd = 2)
@@ -55,10 +55,11 @@ for(i in 1:5){
 }
 
 legend(x = 'topleft', bty = 'n',
-       legend = c('Baseline', 'Comp-high', 'Comp-low', 
-                  'Live-high', 'Live-low'),
+       legend = c('Baseline', 'Comp-worst', 'Comp-best', 
+                  'Live-worst', 'Live-best'),
        lty = 1,
        col = cols,
+       pch = 16,
        cex = plotcex)
 
 dev.off()

@@ -3,18 +3,18 @@ datmap95 <- data.frame(
   g1 = gold1[,'metrics.mAP_0.5.0.95'],
   g2 = gold2[,'metrics.mAP_0.5.0.95'],
   g3 = gold3[,'metrics.mAP_0.5.0.95'],
-  ch1 = comphi1[,'metrics.mAP_0.5.0.95'],
-  ch2 = comphi2[,'metrics.mAP_0.5.0.95'],
-  ch3 = comphi3[,'metrics.mAP_0.5.0.95'],
-  cl1 = complo1[,'metrics.mAP_0.5.0.95'],
-  cl2 = complo2[,'metrics.mAP_0.5.0.95'],
-  cl3 = complo3[,'metrics.mAP_0.5.0.95'],
-  lh1 = livehi1[,'metrics.mAP_0.5.0.95'],
-  lh2 = livehi2[,'metrics.mAP_0.5.0.95'],
-  lh3 = livehi3[,'metrics.mAP_0.5.0.95'],
-  ll1 = livelo1[,'metrics.mAP_0.5.0.95'],
-  ll2 = livelo2[,'metrics.mAP_0.5.0.95'],
-  ll3 = livelo3[,'metrics.mAP_0.5.0.95']
+  ch1 = compworst1[,'metrics.mAP_0.5.0.95'],
+  ch2 = compworst2[,'metrics.mAP_0.5.0.95'],
+  ch3 = compworst3[,'metrics.mAP_0.5.0.95'],
+  cl1 = compbest1[,'metrics.mAP_0.5.0.95'],
+  cl2 = compbest2[,'metrics.mAP_0.5.0.95'],
+  cl3 = compbest3[,'metrics.mAP_0.5.0.95'],
+  lh1 = liveworst1[,'metrics.mAP_0.5.0.95'],
+  lh2 = liveworst2[,'metrics.mAP_0.5.0.95'],
+  lh3 = liveworst3[,'metrics.mAP_0.5.0.95'],
+  ll1 = livebest1[,'metrics.mAP_0.5.0.95'],
+  ll2 = livebest2[,'metrics.mAP_0.5.0.95'],
+  ll3 = livebest3[,'metrics.mAP_0.5.0.95']
 )
 
 ## Graph mean avg precision 50 ####
@@ -39,7 +39,7 @@ mtext(side = 2, line = 2.5, cex = plotcex,
       text = 'Precision (mAP 95%)')
 
 for(i in 1:ncol(datmap95)){
-  points(x = epochs, y = datmap95[,i], pch = 15, cex = .8, 
+  points(x = epochs, y = datmap95[,i], pch = 16, cex = .8, 
          col = adjustcolor(colslong[i], alpha.f = .5))
   lines(lowess(x = epochs, y = datmap95[,i], f=.66), 
         col = colslong[i], lty = 3, lwd = 2)
@@ -53,10 +53,11 @@ for(i in 1:5){
 }
 
 legend(x = 'topleft', bty = 'n',
-       legend = c('Baseline', 'Comp-high', 'Comp-low', 
-                  'Live-high', 'Live-low'),
+       legend = c('Baseline', 'Comp-worst', 'Comp-best', 
+                  'Live-worst', 'Live-best'),
        lty = 1,
        col = cols,
+       pch = 16,
        cex = plotcex)
 
 dev.off()

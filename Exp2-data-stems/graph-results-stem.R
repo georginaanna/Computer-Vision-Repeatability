@@ -25,21 +25,21 @@
 # we can find 80% of the possible positive cases in our top K predictions.
 
 
-gold1 <- read.csv('data-detection-dist/gold1.csv')
-gold2 <- read.csv('data-detection-dist/gold2.csv')
-gold3 <- read.csv('data-detection-dist/gold3.csv')
-comphi1 <- read.csv('data-detection-dist/comp-hi1.csv')
-comphi2 <- read.csv('data-detection-dist/comp-hi2.csv')
-comphi3 <- read.csv('data-detection-dist/comp-hi3.csv')
-complo1 <- read.csv('data-detection-dist/comp-lo1.csv')
-complo2 <- read.csv('data-detection-dist/comp-lo2.csv')
-complo3 <- read.csv('data-detection-dist/comp-lo3.csv')
-livehi1 <- read.csv('data-detection-dist/live-hi1.csv')
-livehi2 <- read.csv('data-detection-dist/live-hi2.csv')
-livehi3 <- read.csv('data-detection-dist/live-hi3.csv')
-livelo1 <- read.csv('data-detection-dist/live-lo1.csv')
-livelo2 <- read.csv('data-detection-dist/live-lo2.csv')
-livelo3 <- read.csv('data-detection-dist/live-lo3.csv')
+gold1 <- read.csv('data-detection-stems/gold1.csv')
+gold2 <- read.csv('data-detection-stems/gold2.csv')
+gold3 <- read.csv('data-detection-stems/gold3.csv')
+compbest1 <- read.csv('data-detection-stems/comp-best1.csv')
+compbest2 <- read.csv('data-detection-stems/comp-best2.csv')
+compbest3 <- read.csv('data-detection-stems/comp-best3.csv')
+compworst1 <- read.csv('data-detection-stems/comp-worst1.csv')
+compworst2 <- read.csv('data-detection-stems/comp-worst2.csv')
+compworst3 <- read.csv('data-detection-stems/comp-worst3.csv')
+livebest1 <- read.csv('data-detection-stems/live-best1.csv')
+livebest2 <- read.csv('data-detection-stems/live-best2.csv')
+livebest3 <- read.csv('data-detection-stems/live-best3.csv')
+liveworst1 <- read.csv('data-detection-stems/live-worst1.csv')
+liveworst2 <- read.csv('data-detection-stems/live-worst2.csv')
+liveworst3 <- read.csv('data-detection-stems/live-worst3.csv')
 
 epochs <- 1:50
 
@@ -49,26 +49,26 @@ colslong <- rep(cols, each=3)
 plotcex <- 2
 
 ## Graph mean avg precision 50 ####
-figname <- 'Fig1-mAP.50'
-source('sim-dist-scripts/graph-results-mAP.5.R')
+figname <- 'Fig1-mAP.50-stems'
+source('sim-stems-scripts/graph-results-mAP.5-stems.R')
 
 ## Graph mean avg precision 95 ####
 # Make plot canvas
-figname <- 'Fig2-mAP.95'
-source('sim-dist-scripts/graph-results-mAP.95.R')
+figname <- 'Fig2-mAP.95-stems'
+source('sim-stems-scripts/graph-results-mAP.95-stems.R')
 
 ## Graph Recall ####
 # Make plot canvas
-figname <- 'Fig3-recall'
-source('sim-dist-scripts/graph-results-recall.R')
+figname <- 'Fig3-recall-stems'
+source('sim-stems-scripts/graph-results-recall-stems.R')
 
 ## Graph Training loss ####
 # Make plot canvas
-figname <- 'Fig4-training-loss'
-source('sim-dist-scripts/graph-results-train-loss.R')
+figname <- 'Fig4-training-loss-stems'
+source('sim-stems-scripts/graph-results-train-loss-stems.R')
 
 ## Graph Validation loss ####
 # Make plot canvas
-figname <- 'Fig5-val-loss'
-source('sim-dist-scripts/graph-results-val-loss.R')
+figname <- 'Fig5-val-loss-stems'
+source('sim-stems-scripts/graph-results-val-loss-stems.R')
 
